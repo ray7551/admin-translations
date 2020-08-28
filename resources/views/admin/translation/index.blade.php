@@ -27,12 +27,12 @@
                                 <label>{{ strtoupper($locale) }} {{ trans('brackets/admin-translations::admin.index.translation') }}</label>
                                 <input type="text" class="form-control"
                                        placeholder="{{ trans('brackets/admin-translations::admin.index.translation_for_language', ['locale' => $locale]) }}"
-                                       v-model="translations.{{ $locale }}"
-                                       v-if="translations.{{ $locale }} && translations.{{ $locale }}.length < 70">
+                                       v-model="translations['{{ $locale }}']"
+                                       v-if="translations['{{ $locale }}'] && translations['{{ $locale }}'].length < 70">
                                 <textarea class="form-control"
                                           placeholder="{{ trans('brackets/admin-translations::admin.index.translation_for_language', ['locale' => $locale]) }}"
-                                          v-model="translations.{{ $locale }}"
-                                          v-if="translations.{{ $locale }} && translations.{{ $locale }}.length >= 70"
+                                          v-model="translations['{{ $locale }}']"
+                                          v-if="translations['{{ $locale }}'] && translations['{{ $locale }}'].length >= 70"
                                           cols="30" rows="4"></textarea>
                             </div>
                         @endforeach
@@ -185,7 +185,7 @@
                                                        id="{{ strtoupper($locale) }}"
                                                        type="checkbox"
                                                        name="{{$locale}}"
-                                                       v-model="exportMultiselect.{{$locale}}"
+                                                       v-model="exportMultiselect['{{$locale}}']"
                                                 >
                                                 <label class="form-check-label" for="{{ strtoupper($locale) }}">
                                                     {{ strtoupper($locale) }}
@@ -285,7 +285,7 @@
                                     <td>@{{ item.group }}</td>
                                     <td>@{{ item.key }}</td>
                                     <td>{{'{{'}}
-                                        item.text.{{ (isset(Auth::user()->language) && in_array(Auth::user()->language, config('translatable.locales'))) ? Auth::user()->language : 'en' }}
+                                        item.text['{{ (isset(Auth::user()->language) && in_array(Auth::user()->language, config('translatable.locales'))) ? Auth::user()->language : 'en' }}']
                                         }}
                                     </td>
                                     <td>@{{ item.created_at }}</td>
