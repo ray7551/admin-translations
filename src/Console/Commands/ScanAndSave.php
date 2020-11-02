@@ -51,11 +51,11 @@ class ScanAndSave extends Command
         /** @var Collection $__ */
 
         DB::transaction(function () use ($trans, $__) {
-            Translation::query()
-                ->whereNull('deleted_at')
-                ->update([
-                    'deleted_at' => Carbon::now()
-                ]);
+//             Translation::query()
+//                 ->whereNull('deleted_at')
+//                 ->update([
+//                     'deleted_at' => Carbon::now()
+//                 ]);
 
             $trans->each(function ($trans) {
                 list($group, $key) = explode('.', $trans, 2);
